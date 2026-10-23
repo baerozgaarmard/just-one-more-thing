@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 import type { ChangeRequest, Project } from "../types";
-import { buildMessage, formatMoney, projectStats, quoteFor, greetingName, cleanTitle } from "./logic";
+import { buildMessage, formatMoney, projectStats, quoteFor, greetingName, cleanTitle, isValidEmail } from "./logic";
 
 const project: Project = {
   id: "p1",
@@ -97,5 +97,17 @@ describe("greetingName and cleanTitle", () => {
     const msg = buildMessage(req({ kind: "clarify", title: "\u201CCan the banner animate?\u201D" }), project, "warm");
     expect(msg.startsWith("Hi Dr. Shah,")).toBe(true);
     expect(msg).not.toContain("\u201C\u201C");
+  });
+});
+
+describe("isValidEmail", () => {
+  it("accepts normal addresses", () => {
+    expect(isValidEmail("meera@harbourdental.in")).toBe(true);
+    expect(isValidEmail(" a@b.co ")).toBe(true);
+  });
+  it("rejects junk", () => {
+    expect(isValidEmail("not-an-email")).toBe(false);
+    expect(isValidEmail("a@b")).toBe(false);
+    expect(isValidEmail("")).toBe(false);
   });
 });

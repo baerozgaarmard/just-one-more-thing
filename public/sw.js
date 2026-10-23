@@ -1,7 +1,7 @@
 /* Just One More Thing — service worker.
    Cache-first for the app shell so the ledger works fully offline.
    Bump VERSION whenever the shell changes. */
-const VERSION = "jomt-v4";
+const VERSION = "jomt-v5";
 const SHELL = [
   "/",
   "/index.html",

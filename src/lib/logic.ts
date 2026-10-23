@@ -183,3 +183,8 @@ export function formatDate(iso: string): string {
     year: "numeric",
   });
 }
+
+/** Pragmatic email check for the waitlist form (not RFC-complete on purpose). */
+export function isValidEmail(email: string): boolean {
+  return /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email.trim());
+}

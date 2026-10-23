@@ -31,6 +31,8 @@ import { loadData, saveData, seedData } from "./lib/store";
 import RequestForm from "./components/RequestForm";
 import MessageModal from "./components/MessageModal";
 import ChangeOrderModal from "./components/ChangeOrderModal";
+import WaitlistPanel from "./components/WaitlistPanel";
+import { Analytics, track } from "@vercel/analytics/react";
 
 const STATUSES: { value: RequestStatus; label: string }[] = [
   { value: "logged", label: "Logged" },
@@ -100,6 +102,7 @@ export default function App() {
   }
 
   function addRequest(req: ChangeRequest) {
+    track("request_logged");
     setData((d) => ({ ...d, requests: [req, ...d.requests] }));
     setShowForm(false);
   }
@@ -416,6 +419,8 @@ export default function App() {
                 ))}
               </dl>
             </section>
+
+            <WaitlistPanel />
           </aside>
         </div>
 
@@ -426,6 +431,7 @@ export default function App() {
         </p>
       </div>
 
+      <Analytics />
       {showForm && (
         <RequestForm project={project} onClose={() => setShowForm(false)} onSave={addRequest} />
       )}
