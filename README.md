@@ -4,6 +4,8 @@
 
 **Live demo:** https://just-one-more-thing-eight.vercel.app/
 
+![Just One More Thing — the paper ledger, rendered in Blender](public/images/ledger-3d-hero.png)
+
 Every freelancer knows the sentence: *"Can you just add one small thing?"*
 One blog here, one animation there — and a five-week project quietly becomes
 nine weeks of work for the original price. Community discussions on Reddit
